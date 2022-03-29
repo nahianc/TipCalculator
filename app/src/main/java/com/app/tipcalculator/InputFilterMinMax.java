@@ -1,14 +1,11 @@
-package com.example.tipcalculator;
+package com.app.tipcalculator;
 
 import android.text.InputFilter;
 import android.text.Spanned;
 
 public class InputFilterMinMax implements InputFilter {
-    private double totalMin;
-    private double totalMax;
-
-    private int tipMin;
-    private int tipMax;
+    private double totalMin, totalMax;
+    private int tipMin, tipMax;
 
     public InputFilterMinMax(double min, double max) {
         this.totalMin = min;

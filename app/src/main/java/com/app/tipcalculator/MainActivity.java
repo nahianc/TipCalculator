@@ -1,4 +1,4 @@
-package com.example.tipcalculator;
+package com.app.tipcalculator;
 
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
