@@ -17,39 +17,41 @@
         android:textColor="#616161"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.123"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="@+id/mainGuideline"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/billTotalDollarSymbol"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="20dp"
         android:text="$"
         android:textColor="#000000"
-        android:textSize="34sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.112"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="@+id/mainGuideline"
         app:layout_constraintTop_toBottomOf="@+id/billTotalHeader" />
 
     <EditText
         android:id="@+id/billTotalField"
-        android:layout_width="282dp"
+        android:layout_width="150dp"
         android:layout_height="56dp"
         android:layout_marginTop="12dp"
-        android:ems="10"
+        android:ems="7"
         android:hint="0.00"
         android:inputType="numberDecimal"
+        android:maxEms="7"
+        android:maxLength="7"
         android:singleLine="true"
         android:textColor="#000000"
         android:textColorHint="#B6B6B6"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.008"
+        app:layout_constraintHorizontal_bias="0"
         app:layout_constraintStart_toEndOf="@+id/billTotalDollarSymbol"
         app:layout_constraintTop_toBottomOf="@+id/billTotalHeader" />
 
@@ -57,47 +59,47 @@
         android:id="@+id/tipHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="20dp"
         android:text="Tip"
         android:textColor="#616161"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.112"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/billTotalDollarSymbol" />
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="@+id/mainGuideline"
+        app:layout_constraintTop_toBottomOf="@+id/billTotalField" />
 
     <EditText
         android:id="@+id/tipPercentField"
-        android:layout_width="66dp"
+        android:layout_width="80dp"
         android:layout_height="56dp"
         android:layout_marginTop="12dp"
         android:ems="10"
         android:hint="0"
         android:inputType="number"
         android:maxLength="3"
+        android:scrollHorizontally="false"
         android:singleLine="true"
         android:textColor="#000000"
         android:textColorHint="#BABABA"
         android:textSize="34sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.127"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toEndOf="@+id/tipPercentSymbol"
         app:layout_constraintTop_toBottomOf="@+id/tipHeader" />
 
     <TextView
         android:id="@+id/tipPercentSymbol"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="172dp"
+        android:layout_marginTop="20dp"
         android:text="%"
         android:textColor="#000000"
-        android:textSize="34sp"
+        android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/tipPercentField"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="@+id/mainGuideline"
         app:layout_constraintTop_toBottomOf="@+id/tipHeader" />
 
     <androidx.cardview.widget.CardView
@@ -138,8 +140,8 @@
                 android:textColor="#673AB7"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.623"
-                app:layout_constraintStart_toEndOf="@+id/splitText"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/splitTotalGuideline"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageButton
@@ -151,7 +153,6 @@
                 android:layout_marginTop="8dp"
                 android:adjustViewBounds="false"
                 android:background="@null"
-                android:onClick="onClickMinus"
                 android:padding="10dp"
                 android:scaleType="centerInside"
                 android:src="@drawable/minus"
@@ -182,7 +183,6 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="8dp"
                 android:background="@null"
-                android:onClick="onClickPlus"
                 android:padding="10dp"
                 android:scaleType="centerInside"
                 android:src="@drawable/plus"
@@ -193,8 +193,8 @@
 
             <TextView
                 android:id="@+id/splitTotalNumText"
-                android:layout_width="127dp"
-                android:layout_height="45dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
                 android:text="0.00"
                 android:textColor="#673AB7"
@@ -202,11 +202,11 @@
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toEndOf="@+id/totalDollarSymbol"
+                app:layout_constraintStart_toEndOf="@+id/splitTotalDollarSymbol"
                 app:layout_constraintTop_toBottomOf="@+id/splitTotalText" />
 
             <TextView
-                android:id="@+id/totalDollarSymbol"
+                android:id="@+id/splitTotalDollarSymbol"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="8dp"
@@ -216,11 +216,25 @@
                 android:textSize="34sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.752"
-                app:layout_constraintStart_toEndOf="@+id/plusButton"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/splitTotalGuideline"
                 app:layout_constraintTop_toBottomOf="@+id/splitTotalText" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/splitTotalGuideline"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_begin="185dp" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.cardview.widget.CardView>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/mainGuideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="44dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

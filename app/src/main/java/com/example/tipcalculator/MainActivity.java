@@ -3,6 +3,7 @@ package com.example.tipcalculator;
 import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
+import android.text.InputFilter;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.view.View;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
         // Attach a textChangedListener to billTotal, tipPercent, and split fields
         // so split total is dynamically updated upon any change
+        billTotalText.setFilters(new InputFilter[]{ new InputFilterMinMax(0.00, 9999.99)});
         billTotalText.addTextChangedListener(new TextWatcher() {
             public void afterTextChanged(Editable s) {
                 calculate();
@@ -44,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
             public void onTextChanged(CharSequence s, int start, int before, int count) {}
         });
 
+        tipPercentText.setFilters(new InputFilter[]{ new InputFilterMinMax(0, 100)});
         tipPercentText.addTextChangedListener(new TextWatcher() {
             public void afterTextChanged(Editable s) {
                 calculate();
@@ -63,9 +66,11 @@ public class MainActivity extends AppCompatActivity {
         // Add a onClick listener to plus button to increment party size if clicked
         plusButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                int partySize = Integer.parseInt( ((TextView)findViewById(R.id.splitNumField)).getText().toString() );
-                partySize++;
-                ((TextView)findViewById(R.id.splitNumField)).setText(Integer.toString(partySize));
+                int partySize = Integer.parseInt(((TextView)findViewById(R.id.splitNumField)).getText().toString());
+                if (partySize < 999) {
+                    partySize++;
+                    ((TextView) findViewById(R.id.splitNumField)).setText(Integer.toString(partySize));
+                }
             }
         });
 
@@ -73,10 +78,7 @@ public class MainActivity extends AppCompatActivity {
         minusButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 int partySize = Integer.parseInt(((TextView) findViewById(R.id.splitNumField)).getText().toString());
-                // If partySize is 1, do nothing
-                if (partySize == 1) {
-                    return;
-                } else {
+                if (partySize > 1) {
                     partySize--;
                     ((TextView) findViewById(R.id.splitNumField)).setText(Integer.toString(partySize));
                 }
